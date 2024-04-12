@@ -1,23 +1,16 @@
 package controller;
 
-import model.Admin;
-import model.User;
-import view.MainMenu;
-import view.WelcomeArt;
+import model.*;
+import view.*;
 
 import java.util.Scanner;
 
 public class LoginController {
-
     private Admin admin;
     private Scanner scanner;
 
-
     public LoginController() {
-        // Initialize users with credentials
         this.admin = new Admin("admin", "admin123");
-       // this.hrManager = new HRManager("manager", "manager123");
-       // this.hrAssistant = new HRAssistant("assistant", "assistant123");
         this.scanner = new Scanner(System.in);
     }
 
@@ -30,35 +23,43 @@ public class LoginController {
 
         System.out.print("Enter your role number: ");
         int role = scanner.nextInt();
-        scanner.nextLine();  // Consume newline left-over
+        scanner.nextLine();
 
         System.out.println("Enter your username:");
         String username = scanner.nextLine();
         System.out.println("Enter your password:");
         String password = scanner.nextLine();
 
-        switch (role) {
-            case 1:
-                authenticateUser(admin, username, password);
-                break;
-            case 2:
-             //   authenticateUser(hrManager, username, password);
-                break;
-            case 3:
-              //  authenticateUser(hrAssistant, username, password);
-                break;
-            default:
-                System.out.println("Invalid input");
-                break;
-        }
-    }
-
-    private void authenticateUser(User user, String username, String password) {
-        if (user.authenticate(username, password)) {
-            System.out.println("Login successful as " + user.getClass().getSimpleName() + "!");
+        if (role == 1 && admin.authenticate(username, password)) {
+            System.out.println("Login successful as Admin!");
+            adminMenu();
         } else {
             System.out.println("Login failed!");
         }
     }
-}
 
+    private void adminMenu() {
+        System.out.println("Admin Menu:");
+        System.out.println("1. Add HR Manager");
+        System.out.println("2. Exit");
+        System.out.print("Choose an option: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Enter HR Manager's username:");
+                String mUsername = scanner.nextLine();
+                System.out.println("Enter HR Manager's password:");
+                String mPassword = scanner.nextLine();
+                admin.addHRManager(mUsername, mPassword);
+                System.out.println("HR Manager added successfully.");
+                break;
+            case 2:
+                System.out.println("Exiting admin menu.");
+                break;
+            default:
+                System.out.println("Invalid choice.");
+        }
+    }
+}
