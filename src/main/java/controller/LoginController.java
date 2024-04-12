@@ -13,7 +13,7 @@ public class LoginController {
 
     public LoginController() {
         this.admin = new Admin("admin", "admin123");
-        Manager.loadManagerCredentials(); // Pre-load credentials at startup
+        Manager.loadManagerCredentials();
         this.scanner = new Scanner(System.in);
     }
 
@@ -28,7 +28,7 @@ public class LoginController {
 
         System.out.print("Enter your role number: ");
         int role = scanner.nextInt();
-        scanner.nextLine();  // Consume newline left-over
+        scanner.nextLine();
 
         System.out.println("Enter your username:");
         String username = scanner.nextLine();
@@ -59,45 +59,50 @@ public class LoginController {
     }
 
     private void adminMenu() {
-        System.out.println("Admin Menu:");
-        System.out.println("1. Add HR Manager");
-        System.out.println("2. View HR Managers");
-        System.out.println("3. Edit HR Managers");
-        System.out.println("4. Delete HR Managers");
+        int choice;
+        do {
+            System.out.println("\n ---- \t Admin Menu \t ----");
+            System.out.println("1. Add HR Manager");
+            System.out.println("2. View HR Managers");
+            System.out.println("3. Edit HR Managers");
+            System.out.println("4. Delete HR Managers");
+            System.out.println("6. Exit");
+            System.out.print("Choose an option: ");
 
-        System.out.println("\n------------------------------");
-        System.out.println("6. Exit");
-        System.out.print("Choose an option: ");
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Clear buffer
+            choice = scanner.nextInt();
+            scanner.nextLine();  // Clear the buffer
 
-        switch (choice) {
-            case 1:
-                System.out.println("Enter HR Manager's username:");
-                String mUsername = scanner.nextLine();
-                System.out.println("Enter HR Manager's password:");
-                String mPassword = scanner.nextLine();
-                admin.addHRManager(mUsername, mPassword);
-                System.out.println("HR Manager added successfully.");
-                Manager.loadManagerCredentials(); // Reload credentials after adding a new manager
-                break;
-
-            case 2:
-                System.out.println("-------- All HR MANAGERS ARE --------\n");
-                managerController.displayHRManagers();
-                break;
-
-            case 3:
-                System.out.println("-----------------Edit HR Managers---------------------");
-                managerController.editHRManagers();
-
-                break;
-
-            case 6:
-                System.out.println("Exiting from admin menu.");
-                break;
-            default:
-                System.out.println("Invalid choice.");
-        }
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter HR Manager's username:");
+                    String mUsername = scanner.nextLine();
+                    System.out.println("Enter HR Manager's password:");
+                    String mPassword = scanner.nextLine();
+                    admin.addHRManager(mUsername, mPassword);
+                    System.out.println("HR Manager added successfully.");
+                    Manager.loadManagerCredentials();
+                    break;
+                case 2:
+                    System.out.println("-------- All HR MANAGERS ARE --------\n");
+                    managerController.displayHRManagers();
+                    break;
+                case 3:
+                    System.out.println("----------------- Edit HR Managers ---------------------");
+                    managerController.editHRManagers();
+                    break;
+                case 4:
+                    System.out.println("----------------- Delete HR Managers ---------------------");
+                    System.out.println("Enter the username of the HR Manager to delete:");
+                    String delUsername = scanner.nextLine();
+                    Manager.deleteManager(delUsername);
+                    break;
+                case 6:
+                    System.out.println("Good Bye !!!.");
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
+            }
+        } while (choice != 6);
     }
 }
