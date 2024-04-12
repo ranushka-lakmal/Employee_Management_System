@@ -70,7 +70,7 @@ public class LoginController {
             System.out.print("Choose an option: ");
 
             choice = scanner.nextInt();
-            scanner.nextLine();  // Clear the buffer
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
