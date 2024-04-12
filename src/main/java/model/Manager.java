@@ -11,6 +11,12 @@ public class Manager extends User {
         super(username, password);
     }
 
+    @Override
+    public boolean authenticate(String username, String password) {
+        System.out.println("HRManager authentication in progress...");
+        return super.authenticate(username, password);
+    }
+
     public static void loadManagerCredentials() {
         managerCredentials.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader("managers.txt"))) {

@@ -14,6 +14,12 @@ public class Admin extends User {
         this.managers = new ArrayList<>();
     }
 
+    @Override
+    public boolean authenticate(String username, String password) {
+        System.out.println("Admin authentication in progress...");
+        return super.authenticate(username, password);
+    }
+
     public void addHRManager(String username, String password) {
         Manager manager = new Manager(username, password);
         managers.add(manager);

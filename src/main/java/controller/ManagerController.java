@@ -4,6 +4,9 @@ import model.Manager;
 
 import java.util.Scanner;
 
+import static model.Manager.saveManagerCredentials;
+import static model.Manager.updateManager;
+
 public class ManagerController {
 
     Scanner scanner = new Scanner(System.in);
@@ -22,8 +25,15 @@ public class ManagerController {
         System.out.println("Enter the new password:");
         String newPassword = scanner.nextLine();
 
-        Manager.updateManager(oldUsername, newUsername, newPassword);
-        Manager.saveManagerCredentials();
+        updateManager(oldUsername, newUsername, newPassword);
+        saveManagerCredentials();
+
+    }
+
+    public void deleteHRManager(){
+        System.out.println("Enter the username of the HR Manager to delete:");
+        String delUsername = scanner.nextLine();
+        Manager.deleteManager(delUsername);
     }
 
 }

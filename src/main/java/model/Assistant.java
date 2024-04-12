@@ -8,4 +8,10 @@ public class Assistant extends User{
 
 
 
+    @Override
+    public boolean authenticate(String username, String password) {
+        System.out.println("HRAssistant authentication in progress...");
+        return super.authenticate(username, password);
+    }
+
 }
