@@ -1,10 +1,14 @@
 package view;
 
+import model.Admin;
+
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class MainMenu {
     String selectMessage = "Please select below options";
+    private Admin admin;
+    private Scanner scanner;
 
     public void menuPrint(){
 
@@ -14,7 +18,6 @@ public class MainMenu {
         System.out.println("3. HR Assistant");
 
     }
-
 
 
 

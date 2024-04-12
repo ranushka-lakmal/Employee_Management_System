@@ -8,11 +8,16 @@ import java.util.Scanner;
 public class LoginController {
     private Admin admin;
     private Scanner scanner;
+    private MainMenu mainMenu;
+
 
     public LoginController() {
         this.admin = new Admin("admin", "admin123");
+        Manager.loadManagerCredentials(); // Pre-load credentials at startup
         this.scanner = new Scanner(System.in);
     }
+
+    ManagerController managerController = new ManagerController();
 
     public void initiateLogin() {
         WelcomeArt welcomeArt = new WelcomeArt();
@@ -23,28 +28,48 @@ public class LoginController {
 
         System.out.print("Enter your role number: ");
         int role = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine();  // Consume newline left-over
 
         System.out.println("Enter your username:");
         String username = scanner.nextLine();
         System.out.println("Enter your password:");
         String password = scanner.nextLine();
 
-        if (role == 1 && admin.authenticate(username, password)) {
-            System.out.println("Login successful as Admin!");
-            adminMenu();
-        } else {
-            System.out.println("Login failed!");
+        switch (role) {
+            case 1:
+                if (admin.authenticate(username, password)) {
+                    System.out.println("Login successful as Admin!");
+                    adminMenu();
+                } else {
+                    System.out.println("Login failed!");
+                }
+                break;
+            case 2:
+                if (Manager.validateCredentials(username, password)) {
+                    System.out.println("Login successful as HR Manager!");
+
+                } else {
+                    System.out.println("Login failed!");
+                }
+                break;
+            default:
+                System.out.println("Invalid input");
+                break;
         }
     }
 
     private void adminMenu() {
         System.out.println("Admin Menu:");
         System.out.println("1. Add HR Manager");
-        System.out.println("2. Exit");
+        System.out.println("2. View HR Managers");
+        System.out.println("3. Edit HR Managers");
+        System.out.println("4. Delete HR Managers");
+
+        System.out.println("\n------------------------------");
+        System.out.println("6. Exit");
         System.out.print("Choose an option: ");
         int choice = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // Clear buffer
 
         switch (choice) {
             case 1:
@@ -54,9 +79,22 @@ public class LoginController {
                 String mPassword = scanner.nextLine();
                 admin.addHRManager(mUsername, mPassword);
                 System.out.println("HR Manager added successfully.");
+                Manager.loadManagerCredentials(); // Reload credentials after adding a new manager
                 break;
+
             case 2:
-                System.out.println("Exiting admin menu.");
+                System.out.println("-------- All HR MANAGERS ARE --------\n");
+                managerController.displayHRManagers();
+                break;
+
+            case 3:
+                System.out.println("-----------------Edit HR Managers---------------------");
+                managerController.editHRManagers();
+
+                break;
+
+            case 6:
+                System.out.println("Exiting from admin menu.");
                 break;
             default:
                 System.out.println("Invalid choice.");
