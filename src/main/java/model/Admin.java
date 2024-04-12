@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Admin extends User {
+public class Admin extends User implements Authenticatable{
     private List<Manager> managers;
 
     public Admin(String username, String password) {
@@ -17,7 +17,13 @@ public class Admin extends User {
     @Override
     public boolean authenticate(String username, String password) {
         System.out.println("Admin authentication in progress...");
-        return super.authenticate(username, password);
+        return this.username.equals(username) && this.password.equals(password);
+    }
+
+    @Override
+    public void updateCredentials(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public void addHRManager(String username, String password) {
