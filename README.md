@@ -11,3 +11,8 @@
 ## 3. Admin Menu
 
 <img width="444" alt="a-img3" src="https://github.com/ranushka-lakmal/Employee_Management_System/assets/19938421/22dc3b0f-426b-4b5a-966d-e71efe41ae22">
+
+
+## 4. Add New HR Manager
+
+<img width="444" alt="a-img-add hr manager" src="https://github.com/ranushka-lakmal/Employee_Management_System/assets/19938421/95974f35-3de5-4177-9531-a242337973c8">
