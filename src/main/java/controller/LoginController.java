@@ -10,6 +10,8 @@ public class LoginController {
     private Scanner scanner;
     private MainMenu mainMenu;
 
+    private Authenticatable currentUser;
+
 
     public LoginController() {
         this.admin = new Admin("admin", "admin123");
