@@ -16,3 +16,17 @@
 ## 4. Add New HR Manager
 
 <img width="444" alt="a-img-add hr manager" src="https://github.com/ranushka-lakmal/Employee_Management_System/assets/19938421/95974f35-3de5-4177-9531-a242337973c8">
+
+## 5. View all HR Managers
+
+<img width="444" alt="view hr managers" src="https://github.com/ranushka-lakmal/Employee_Management_System/assets/19938421/f3ffee8e-fa53-407e-bee0-4c6c42731c74">
+
+## 6. Edit HR Manager
+
+<img width="444" alt="edit" src="https://github.com/ranushka-lakmal/Employee_Management_System/assets/19938421/bf91a1ed-0bc4-46c1-a8d1-32d5bb06378e">
+
+
+## Manager.txt file example
+
+<img width="1183" alt="manager txt file" src="https://github.com/ranushka-lakmal/Employee_Management_System/assets/19938421/efb86310-1430-473a-8358-fbda0af1ebc7">
+
