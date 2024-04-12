@@ -65,4 +65,15 @@ public class Manager extends User {
             System.out.println("Error writing to file: " + e.getMessage());
         }
     }
+
+
+    public static void deleteManager(String username) {
+        if (managerCredentials.containsKey(username)) {
+            managerCredentials.remove(username);
+            saveManagerCredentials();
+            System.out.println("HR Manager removed successfully.");
+        } else {
+            System.out.println("Manager not found!");
+        }
+    }
 }

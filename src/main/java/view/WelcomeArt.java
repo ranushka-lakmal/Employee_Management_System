@@ -12,7 +12,7 @@ public class WelcomeArt {
     public void printWelcome(){
 
         System.out.println("****************************************************\n" +
-                "****************WELCOME TO THE SYSTEM***************\n"+
+                "******* \t    WELCOME TO THE SYSTEM \t     *******\n"+
                 "****************************************************\n");
     }
 
