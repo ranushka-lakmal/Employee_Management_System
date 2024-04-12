@@ -92,9 +92,7 @@ public class LoginController {
                     break;
                 case 4:
                     System.out.println("----------------- Delete HR Managers ---------------------");
-                    System.out.println("Enter the username of the HR Manager to delete:");
-                    String delUsername = scanner.nextLine();
-                    Manager.deleteManager(delUsername);
+                    managerController.deleteHRManager();
                     break;
                 case 6:
                     System.out.println("Good Bye !!!.");
