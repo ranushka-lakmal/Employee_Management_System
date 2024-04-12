@@ -5,7 +5,7 @@ public class Main {
 
         WelcomeArt welcomeArt = new WelcomeArt();
         welcomeArt.printWelcome();
-        welcomeArt.printDate();
+
 
 
         MainMenu mainMenu =  new MainMenu();
